@@ -1,2 +1,0 @@
-          command: git checkout test-results; npm test -- --coverage > result.txt; git add result.txt; git commit -m 'add test results'; git push origin test-results;
-

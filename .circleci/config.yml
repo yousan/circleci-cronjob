@@ -76,20 +76,20 @@ jobs:
 #          name: Publish package
 #          command: npm publish
 
-workflows:
-  version: 2
-  commit_test_results:
-    triggers:
-      - schedule:
-    cron: "*/5 * * * *" # UTCで記述。この場合は5分毎
-    jobs:
-      - put_test_results
-  test-deploy:
-    jobs:
-      - test:
-          filters:
-            tags:
-              only: /^v.*/
+#workflows:
+#  version: 2
+#  commit_test_results:
+#    triggers:
+#      - schedule:
+#    cron: "*/5 * * * *" # UTCで記述。この場合は5分毎
+#    jobs:
+#      - put_test_results
+#  test-deploy:
+#    jobs:
+#      - test:
+#          filters:
+#            tags:
+#              only: /^v.*/
 #      - deploy:
 #          requires:
 #            - test
