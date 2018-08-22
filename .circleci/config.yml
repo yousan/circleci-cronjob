@@ -84,7 +84,7 @@ jobs:
 
 workflows:
   version: 2
-  nightly:
+  commit_test_results:
     triggers:
       - schedule:
           cron: "5 * * * *"
