@@ -68,10 +68,10 @@ workflows:
   version: 2
   commit_test_results:
     triggers:
-    - schedule:
+      - schedule:
       cron: "0 1 * * *" # UTCで記述。この場合は朝10時
-  jobs:
-    - put_test_results
+    jobs:
+      - put_test_results
   test-deploy:
     jobs:
       - test:
