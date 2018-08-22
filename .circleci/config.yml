@@ -87,7 +87,7 @@ workflows:
   commit_test_results:
     triggers:
       - schedule:
-    cron: "*/5 * * * *" # UTCで記述。この場合は5分毎
+        cron: "*/5 * * * *" # UTCで記述。この場合は5分毎
     jobs:
       - build
 #  test-deploy:
