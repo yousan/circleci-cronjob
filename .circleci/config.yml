@@ -56,8 +56,8 @@ jobs:
           - v1-dependencies-
 
       - run: git reset --hard HEAD
-      - run: npm install
       - run: git checkout test-results;
+      - run: npm install
       - run: npm test -- --coverage > result.txt
       - run: git config user.email "yousan+circleci@users.noreply.github.com"
       - run: git config user.name "yousan+circleci"
