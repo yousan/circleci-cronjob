@@ -84,10 +84,6 @@ jobs:
 
 workflows:
   version: 2
-  commit:
-    jobs:
-      - test
-      - deploy
   nightly:
     triggers:
       - schedule:
@@ -98,7 +94,7 @@ workflows:
                 - master
                 - beta
     jobs:
-      - coverage
+      - build
 #workflows:
 #  version: 2
 #  commit_test_results:
