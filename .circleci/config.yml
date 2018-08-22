@@ -11,16 +11,16 @@ defaults: &defaults
     - image: circleci/node:8.9.1
 
 jobs:
-  build:
-    <<: *defaults
-    steps:
-      - checkout
-      - run:
-          name: npm
-          command: npm install
-      - run:
-          name: run test and commit
-          command: git checkout test-results; npm test -- --coverage > result.txt; git add result.txt; git commit -m 'add test results'; git push origin test-results;
+#  build:
+#    <<: *defaults
+#    steps:
+#      - checkout
+#      - run:
+#          name: npm
+#          command: npm install
+#      - run:
+#          name: run test and commit
+#          command: git checkout test-results; npm test -- --coverage > result.txt; git add result.txt; git commit -m 'add test results'; git push origin test-results;
   test:
     <<: *defaults
     steps:
@@ -44,7 +44,7 @@ jobs:
       - persist_to_workspace:
           root: ~/repo
           paths: .
-  put_test_results:
+  build:
     <<: *defaults
     steps:
       - checkout
@@ -56,9 +56,14 @@ jobs:
           - v1-dependencies-
 
       - run: npm install
-      - run:
-          name: commit simasu
-          command: git checkout test-results; npm test -- --coverage > result.txt; git add result.txt; git commit -m 'add test results'; git push origin test-results;
+      - run: git checkout test-results;
+      - run: npm test -- --coverage > result.txt
+      - run: git config user.email "yousan+circleci@users.noreply.github.com"
+      - run: git config user.name "yousan+circleci"
+
+      - run: git add result.txt
+      - run: git commit -m 'add test results'
+      - run: git push origin test-results;
 #  deploy:
 #    <<: *defaults
 #    steps:
