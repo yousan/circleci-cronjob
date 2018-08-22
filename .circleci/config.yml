@@ -59,6 +59,7 @@ jobs:
       - run: git checkout test-results;
       - run: npm install
       - run: npm test -- --coverage > result.txt
+      - run: echo $RANDOM >> result.txt
       - run: git config user.email "yousan+circleci@users.noreply.github.com"
       - run: git config user.name "yousan+circleci"
       - run: git add result.txt package-lock.json
