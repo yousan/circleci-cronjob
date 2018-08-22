@@ -84,19 +84,18 @@ jobs:
 
 workflows:
   version: 2
-  commit:
-    jobs:
-      - test
-      - deploy
+#  commit:
+#    jobs:
+#      - test
+#      - deploy
   nightly:
     triggers:
       - schedule:
-          cron: "0 0 * * *"
+          cron: "*/5 * * * *" # UTCで記述。この場合は5分毎
           filters:
             branches:
               only:
                 - master
-                - beta
     jobs:
       - build
 
