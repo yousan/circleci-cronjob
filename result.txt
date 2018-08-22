@@ -1,5 +1,5 @@
 
-> circleci-cronjob@1.0.0 test /Users/yousan/git/circleci-cronjob
+> circleci-cronjob@1.0.0 test /home/circleci/repo
 > jest "--coverage"
 
 ----------|----------|----------|----------|----------|-------------------|
