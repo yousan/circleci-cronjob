@@ -84,10 +84,14 @@ jobs:
 
 workflows:
   version: 2
-  commit_test_results:
+  commit:
+    jobs:
+      - test
+      - deploy
+  nightly:
     triggers:
       - schedule:
-          cron: "*/5 * * * *" # UTCで記述。この場合は5分毎
+          cron: "0 0 * * *"
           filters:
             branches:
               only:
@@ -95,6 +99,20 @@ workflows:
                 - beta
     jobs:
       - build
+
+#workflows:
+#  version: 2
+#  commit_test_results:
+#    triggers:
+#      - schedule:
+#          cron: "*/5 * * * *" # UTCで記述。この場合は5分毎
+#          filters:
+#            branches:
+#              only:
+#                - master
+#                - beta
+#    jobs:
+#      - build
 #  test-deploy:
 #    jobs:
 #      - test:
