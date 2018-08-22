@@ -34,6 +34,23 @@ jobs:
       - persist_to_workspace:
           root: ~/repo
           paths: .
+  put_test_results:
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-
+# fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run: npm install
+      - run:
+          name: Run tests
+          command: npm test > hoge.txt
+      - run:
+          name: commit simasu
+          command: git checkout test-results; npm test -- --coverage > result.txt; git add result.txt; git commit -m 'add test results'; git push origin test-results;
 #  deploy:
 #    <<: *defaults
 #    steps:
@@ -48,10 +65,12 @@ jobs:
 
 workflows:
   version: 2
-  put_test_results:
-      triggers:
-        - schedule:
-            cron: "0 1 * * *" # UTCで記述。この場合は朝10時
+  commit_test_results:
+    triggers:
+    - schedule:
+      cron: "0 1 * * *" # UTCで記述。この場合は朝10時
+  jobs:
+    -
   test-deploy:
     jobs:
       - test:
