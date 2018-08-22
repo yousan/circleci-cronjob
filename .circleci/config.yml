@@ -15,7 +15,12 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-      - run: npm install
+      - run:
+          name: npm
+          command: npm install
+      - run:
+          name: run test and commit
+          command: git checkout test-results; npm test -- --coverage > result.txt; git add result.txt; git commit -m 'add test results'; git push origin test-results;
   test:
     <<: *defaults
     steps:
@@ -71,7 +76,7 @@ workflows:
   commit_test_results:
     triggers:
       - schedule:
-    cron: "0 1 * * *" # UTCで記述。この場合は朝10時
+    cron: "*/5 * * * *" # UTCで記述。この場合は5分毎
     jobs:
       - put_test_results
   test-deploy:
