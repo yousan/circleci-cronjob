@@ -65,6 +65,11 @@ jobs:
       - run: git add result.txt package-lock.json
       - run: git commit -m 'add test results'
       - run: git push origin test-results;
+      - save_cache:
+        paths:
+          - node_modules
+        key: v1-dependencies-
+
 #  deploy:
 #    <<: *defaults
 #    steps:
