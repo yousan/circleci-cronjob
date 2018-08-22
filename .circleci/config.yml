@@ -91,7 +91,7 @@ workflows:
    nightly:
     triggers:
       - schedule:
-          cron: "0 0 * * *" # UTCで記述。この場合は5分毎
+          cron: "0 0 * * *"
           filters:
             branches:
               only:
