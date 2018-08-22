@@ -56,11 +56,11 @@ jobs:
           - v1-dependencies-
 
       - run: npm install
+      - run: git reset --hard HEAD
       - run: git checkout test-results;
       - run: npm test -- --coverage > result.txt
       - run: git config user.email "yousan+circleci@users.noreply.github.com"
       - run: git config user.name "yousan+circleci"
-      - run: git reset --hard HEAD
       - run: git add result.txt package-lock.json
       - run: git commit -m 'add test results'
       - run: git push origin test-results;
