@@ -84,11 +84,11 @@ jobs:
 
 workflows:
   version: 2
-#  commit:
-#    jobs:
-#      - test
-#      - deploy
-  nightly:
+  commit:
+    jobs:
+      - test
+      - deploy
+   nightly:
     triggers:
       - schedule:
           cron: "*/5 * * * *" # UTCで記述。この場合は5分毎
