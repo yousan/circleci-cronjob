@@ -82,18 +82,18 @@ jobs:
 #          name: Publish package
 #          command: npm publish
 
-workflows:
-  version: 2
-  commit_test_results:
-    triggers:
-      - schedule:
-          cron: "30 * * * *"
-          filters:
-            branches:
-              only:
-                - master
-    jobs:
-      - build
+#workflows:
+#  version: 2
+#  commit_test_results:
+#    triggers:
+#      - schedule:
+#          cron: "30 * * * *"
+#          filters:
+#            branches:
+#              only:
+#                - master
+#    jobs:
+#      - build
 #workflows:
 #  version: 2
 #  commit_test_results:
